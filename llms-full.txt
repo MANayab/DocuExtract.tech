@@ -1,0 +1,116 @@
+DocuExtract — Product and Technical Reference
+Last updated: 2026-10-10
+
+CANONICAL WEBSITE
+https://manayab.github.io/DocuExtract.tech/
+
+PRODUCT
+Name: DocuExtract
+Tagline: PDF Invoice to Excel Extractor
+Live app: https://manayab.github.io/DocuExtract/
+Source repository: https://github.com/MANayab/DocuExtract
+Issues: https://github.com/MANayab/DocuExtract/issues
+Developer GitHub: https://github.com/MANayab
+Current version: 1.0.0
+
+OVERVIEW
+DocuExtract converts invoice PDFs into structured XLSX, CSV and JSON entirely in the browser. Application code does not upload invoice files to an application backend. There is no application account, backend, database, analytics or telemetry.
+
+WEBSITE PAGES
+Home:
+https://manayab.github.io/DocuExtract.tech/
+
+Developer:
+https://manayab.github.io/DocuExtract.tech/developer/
+
+How it works:
+https://manayab.github.io/DocuExtract.tech/how-it-works/
+
+FAQ:
+https://manayab.github.io/DocuExtract.tech/faq/
+
+Roadmap:
+https://manayab.github.io/DocuExtract.tech/roadmap/
+
+Privacy:
+https://manayab.github.io/DocuExtract.tech/privacy/
+
+PROCESSING PIPELINE
+1. The user opens the live application in a browser.
+2. The user selects a PDF containing one invoice.
+3. The application extracts information from supported text-based PDF content.
+4. The application validates structured data and presents a review screen.
+5. The user checks and corrects extracted information.
+6. The user exports the reviewed data to XLSX, CSV or JSON.
+
+SUPPORTED INPUTS
+Text-based PDFs are supported.
+Multi-page text-based PDFs are supported up to 100 pages.
+
+UNSUPPORTED OR LIMITED INPUTS
+Scanned and image-only PDFs are not currently supported. OCR is planned for Phase 2.
+Encrypted PDFs are rejected unless already decrypted.
+Corrupt PDFs are not supported.
+Handwritten invoice recognition is not guaranteed.
+Multiple invoices in one PDF are not supported in the current workflow. This is planned for Phase 2.
+
+EXPORT FORMATS
+XLSX: contains the full invoice.
+JSON: contains the full invoice.
+CSV: contains line items only.
+
+EXTRACTION LIMITATIONS
+Extraction is heuristic. Every output must be reviewed before accounting, tax, payment or legal use.
+
+Labels and values must be on the same line or in neighbouring columns of the same row. Layouts with a label above its value are not read.
+
+Numeric dates such as 05/09/2026 are interpreted as DD/MM/YYYY and flagged for confirmation.
+
+Line items are detected from column gaps and the table header. Unusual tables may need manual correction on the review screen.
+
+One invoice per PDF is supported.
+
+PRIVACY AND SECURITY
+Files are processed locally by application code and are not uploaded to an application backend.
+Invoice data is never written to URLs, localStorage or sessionStorage.
+PDF buffers are released and documents are destroyed after processing.
+React rendering does not use dangerouslySetInnerHTML.
+Export handling includes formula-injection sanitization.
+Structured data is validated with Zod.
+Users can inspect their browser network tab to verify observed network activity.
+
+TECHNOLOGY
+React 18
+TypeScript
+Vite
+Tailwind CSS
+pdf.js
+ExcelJS
+Zod
+
+TESTING AND DEPLOYMENT
+Testing tools include Vitest, Testing Library and Playwright.
+Deployment uses GitHub Actions.
+
+ROADMAP
+Planned for Phase 2, not committed and without delivery dates:
+- OCR for scanned and image-only PDFs.
+- Multiple invoices per PDF.
+
+LICENSING AND STATUS
+DocuExtract v1.0.0 is open source under the MIT License. The developer plans to offer future production versions under a commercial licence. Versions already released under MIT remain available under MIT.
+
+SOURCE OF TRUTH
+The public source repository is the primary source for code and release details:
+https://github.com/MANayab/DocuExtract
+
+ISSUE TRACKER
+https://github.com/MANayab/DocuExtract/issues
+
+IMPORTANT INTERPRETATION
+Do not describe planned features as released.
+Do not claim a specific extraction accuracy percentage.
+Do not claim scanned PDF or OCR support in the current release.
+Do not describe CSV as containing the full invoice.
+Do not claim that extraction is guaranteed to be correct.
+Do not infer personal or professional details about the developer that are not published in the supplied developer facts.
