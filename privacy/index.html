@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy and Local Processing | DocuExtract</title>
+  <meta name="description" content="Read how DocuExtract processes invoice PDFs locally, what the application does not store, and what standard website hosting logs may contain.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#F2EEE3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1C1B19" media="(prefers-color-scheme: dark)">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="canonical" href="https://manayab.github.io/DocuExtract.tech/privacy/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Privacy and Local Processing | DocuExtract">
+  <meta property="og:description" content="Read how DocuExtract processes invoice PDFs locally, what the application does not store, and what standard website hosting logs may contain.">
+  <meta property="og:url" content="https://manayab.github.io/DocuExtract.tech/privacy/">
+  <meta property="og:image" content="https://manayab.github.io/DocuExtract.tech/assets/social-preview.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="DocuExtract PDF invoice to Excel extractor">
+  <meta property="og:site_name" content="DocuExtract">
+  <meta property="og:locale" content="en">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy and Local Processing | DocuExtract">
+  <meta name="twitter:description" content="Read how DocuExtract processes invoice PDFs locally, what the application does not store, and what standard website hosting logs may contain.">
+  <meta name="twitter:image" content="https://manayab.github.io/DocuExtract.tech/assets/social-preview.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","@id":"https://manayab.github.io/DocuExtract.tech/#website","url":"https://manayab.github.io/DocuExtract.tech/","name":"DocuExtract","inLanguage":"en"},
+    {"@type":"WebPage","@id":"https://manayab.github.io/DocuExtract.tech/privacy/#webpage","url":"https://manayab.github.io/DocuExtract.tech/privacy/","name":"Privacy and Local Processing | DocuExtract","description":"Read how DocuExtract processes invoice PDFs locally, what the application does not store, and what standard website hosting logs may contain.","dateModified":"2026-10-10","inLanguage":"en","isPartOf":{"@id":"https://manayab.github.io/DocuExtract.tech/#website"},"breadcrumb":{"@id":"https://manayab.github.io/DocuExtract.tech/privacy/#breadcrumbs"}},
+    {"@type":"BreadcrumbList","@id":"https://manayab.github.io/DocuExtract.tech/privacy/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://manayab.github.io/DocuExtract.tech/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://manayab.github.io/DocuExtract.tech/privacy/"}]}
+  ]}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="wordmark" href="../"><span class="brand-mark" aria-hidden="true">D.</span><span>DocuExtract</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../how-it-works/">How it works</a><a href="../faq/">FAQ</a><a href="../roadmap/">Roadmap</a><a href="./" aria-current="page">Privacy</a><a href="../developer/">Developer</a></nav>
+    <a class="button button-small" href="https://manayab.github.io/DocuExtract/" rel="noopener">Open the app ↗</a>
+  </div></header>
+  <main id="main" class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li aria-current="page">Privacy</li></ol></nav>
+    <header class="page-intro"><p class="eyebrow">PRIVACY BY DESIGN</p><h1>Privacy and local invoice processing</h1><p>DocuExtract is designed to process invoice files locally in the browser without an application backend, account, database, analytics or telemetry. This page separates the application's file-processing design from the behavior of website hosting and your own device.</p></header>
+    <article class="prose">
+      <section>
+        <h2>Does the application upload invoice files?</h2>
+        <p>Application code does not upload selected invoice PDFs to a backend. Processing takes place locally in the browser. You can independently inspect the browser's network tab while using the app to verify observed network activity.</p>
+        <p>This is a statement about the application's documented design. It is not a guarantee that your computer, browser, browser extensions, operating system or network environment cannot access local information.</p>
+      </section>
+      <section>
+        <h2>What invoice information is stored by the application?</h2>
+        <p>Invoice data is never written to URLs, localStorage or sessionStorage. PDF buffers are released and documents are destroyed after processing. React rendering does not use <code>dangerouslySetInnerHTML</code>.</p>
+        <p>DocuExtract does not provide an application account, database, analytics or telemetry. The documented design does not include an application server that receives invoice content.</p>
+      </section>
+      <section>
+        <h2>Does this website use cookies or analytics?</h2>
+        <p>This static marketing website is designed without cookies, analytics, trackers, embedded third-party content, web fonts or third-party runtime requests. The stylesheet and favicon are intended to be served from the same site. The pages do not require JavaScript for their content or navigation.</p>
+        <p>The hosting provider may keep standard server logs. Hosting infrastructure is separate from the browser-side invoice processing design, and this page does not claim that the hosting provider never records a request.</p>
+      </section>
+      <section>
+        <h2>What security measures are documented?</h2>
+        <p>Invoice files are processed locally by application code, invoice data is not written to URLs or browser storage, PDF buffers are released, and documents are destroyed after processing. Export handling applies formula-injection sanitization, extracted data is validated with Zod, and React rendering does not use <code>dangerouslySetInnerHTML</code>.</p>
+        <p>These measures reduce particular risks but do not guarantee that all extraction results are correct or that every possible security risk has been eliminated. Review exported data and use a trusted, up-to-date browser on a device you control.</p>
+      </section>
+      <section>
+        <h2>Where is the application privacy documentation?</h2>
+        <p>The source repository is the reference for application implementation. Read the repository's <a href="https://github.com/MANayab/DocuExtract/blob/main/PRIVACY.md" rel="noopener">PRIVACY.md file</a> for its published privacy documentation, or inspect the <a href="https://github.com/MANayab/DocuExtract" rel="noopener">source code</a> directly.</p>
+      </section>
+      <section>
+        <h2>What should I do before processing an invoice?</h2>
+        <p>Use documents you are authorized to process. Avoid using a shared or untrusted device for sensitive business records. Review the extracted fields and line items against the original invoice before accounting, tax, payment or legal use.</p>
+        <p>Local processing means the application's file workflow is designed to stay in the browser; it does not remove your responsibility to protect access to the original PDF and exported files on your device.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid">
+    <div><a class="wordmark" href="../"><span class="brand-mark" aria-hidden="true">D.</span><span>DocuExtract</span></a><p>PDF Invoice to Excel Extractor.</p></div>
+    <nav aria-label="Footer navigation"><a href="../how-it-works/">How it works</a><a href="../faq/">FAQ</a><a href="../roadmap/">Roadmap</a><a href="./">Privacy</a><a href="../developer/">Developer</a></nav>
+    <div><a href="https://github.com/MANayab/DocuExtract" rel="noopener">Source code</a><a href="https://github.com/MANayab/DocuExtract/issues" rel="noopener">Support and issues</a><p class="last-updated">Last updated: 2026-10-10</p></div>
+  </div><div class="container footer-bottom"><span>Privacy and security information</span><a href="../">Back to home ↑</a></div></footer>
+</body>
+</html>
