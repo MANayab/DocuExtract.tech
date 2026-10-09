@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How PDF Invoice Extraction Works | DocuExtract</title>
+  <meta name="description" content="Learn how DocuExtract reads invoice PDFs, validates fields, supports XLSX, CSV and JSON exports, and handles privacy and extraction limits.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#F2EEE3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1C1B19" media="(prefers-color-scheme: dark)">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="canonical" href="https://manayab.github.io/DocuExtract.tech/how-it-works/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="How PDF Invoice Extraction Works | DocuExtract">
+  <meta property="og:description" content="Learn how DocuExtract reads invoice PDFs, validates fields, supports XLSX, CSV and JSON exports, and handles privacy and extraction limits.">
+  <meta property="og:url" content="https://manayab.github.io/DocuExtract.tech/how-it-works/">
+  <meta property="og:image" content="https://manayab.github.io/DocuExtract.tech/assets/social-preview.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="DocuExtract PDF invoice to Excel extractor">
+  <meta property="og:site_name" content="DocuExtract">
+  <meta property="og:locale" content="en">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How PDF Invoice Extraction Works | DocuExtract">
+  <meta name="twitter:description" content="Learn how DocuExtract reads invoice PDFs, validates fields, supports XLSX, CSV and JSON exports, and handles privacy and extraction limits.">
+  <meta name="twitter:image" content="https://manayab.github.io/DocuExtract.tech/assets/social-preview.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","@id":"https://manayab.github.io/DocuExtract.tech/#website","url":"https://manayab.github.io/DocuExtract.tech/","name":"DocuExtract","inLanguage":"en"},
+    {"@type":"WebPage","@id":"https://manayab.github.io/DocuExtract.tech/how-it-works/#webpage","url":"https://manayab.github.io/DocuExtract.tech/how-it-works/","name":"How PDF Invoice Extraction Works | DocuExtract","description":"Learn how DocuExtract reads invoice PDFs, validates fields, supports XLSX, CSV and JSON exports, and handles privacy and extraction limits.","isPartOf":{"@id":"https://manayab.github.io/DocuExtract.tech/#website"},"dateModified":"2026-10-10","inLanguage":"en","breadcrumb":{"@id":"https://manayab.github.io/DocuExtract.tech/how-it-works/#breadcrumbs"}},
+    {"@type":"BreadcrumbList","@id":"https://manayab.github.io/DocuExtract.tech/how-it-works/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://manayab.github.io/DocuExtract.tech/"},{"@type":"ListItem","position":2,"name":"How it works","item":"https://manayab.github.io/DocuExtract.tech/how-it-works/"}]},
+    {"@type":"SoftwareApplication","@id":"https://manayab.github.io/DocuExtract.tech/#software","name":"DocuExtract","description":"PDF Invoice to Excel Extractor. Converts invoice PDFs into structured XLSX, CSV and JSON entirely in the browser.","url":"https://manayab.github.io/DocuExtract/","applicationCategory":"BusinessApplication","operatingSystem":"Any","softwareVersion":"1.0.0","license":"https://opensource.org/license/mit/","isAccessibleForFree":true,"featureList":["XLSX, CSV and JSON export","Review screen before export","Date-confirmation flags","Zod-validated data","Formula-injection sanitization on exports","Local browser processing without application uploads"]}
+  ]}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="wordmark" href="../"><span class="brand-mark" aria-hidden="true">D.</span><span>DocuExtract</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="./" aria-current="page">How it works</a><a href="../faq/">FAQ</a><a href="../roadmap/">Roadmap</a><a href="../privacy/">Privacy</a><a href="../developer/">Developer</a></nav>
+    <a class="button button-small" href="https://manayab.github.io/DocuExtract/" rel="noopener">Open the app ↗</a>
+  </div></header>
+  <main id="main" class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li aria-current="page">How it works</li></ol></nav>
+    <header class="page-intro"><p class="eyebrow">PROCESS · VALIDATE · REVIEW · EXPORT</p><h1>How DocuExtract turns invoice PDFs into structured data</h1><p>DocuExtract is a browser-based invoice PDF to Excel extractor. It reads supported PDF text, applies heuristic extraction, validates structured data, presents a review screen and exports the result as XLSX, CSV or JSON.</p></header>
+    <article class="prose">
+      <section>
+        <h2>What happens when you select a PDF?</h2>
+        <p>The processing workflow starts when you select a document in the live application. Application code processes the file locally in the browser instead of uploading the invoice to an application backend. The tool is intended for text-based PDFs, including multi-page documents of up to 100 pages.</p>
+        <p>A PDF may contain actual text or only scanned page images. Text-based PDFs expose selectable text for extraction; scanned and image-only PDFs need optical character recognition (OCR), which DocuExtract does not currently provide. OCR is planned for Phase 2, without a committed delivery date.</p>
+        <ol>
+          <li><strong>Select the document.</strong> Choose a readable text-based PDF containing one invoice.</li>
+          <li><strong>Read and interpret text.</strong> The extraction logic uses document text and heuristic rules to identify fields and line items.</li>
+          <li><strong>Validate the structure.</strong> Extracted data is validated using Zod.</li>
+          <li><strong>Review the result.</strong> Check the fields and correct mistakes before export.</li>
+          <li><strong>Export the reviewed data.</strong> Choose the format suited to the next task.</li>
+        </ol>
+      </section>
+      <section>
+        <h2>How are invoice fields and line items detected?</h2>
+        <p>Extraction is heuristic: the application applies rules to the text and layout information available from a PDF. It is not a guarantee that every vendor template, field label, or table arrangement will be interpreted correctly.</p>
+        <p>Labels and values must be on the same line or in neighbouring columns of the same row. A layout that places a label above its value is not read by the documented extraction approach. This is an important compatibility boundary when deciding which PDFs to process.</p>
+        <p>Line items are detected using column gaps and the table header. Unusual column spacing, multi-line descriptions, or atypical tables can lead to rows or values that need correction. Use the review screen to compare extracted rows with the source invoice rather than assuming that a plausible-looking spreadsheet is correct.</p>
+        <p>Numeric dates such as 05/09/2026 are interpreted as DD/MM/YYYY and flagged for confirmation. Review the date against the original document, especially when the source convention could be ambiguous.</p>
+      </section>
+      <section>
+        <h2>Which export format should you choose?</h2>
+        <p>DocuExtract provides three output formats with different scopes. XLSX and JSON contain the full invoice; CSV contains line items only.</p>
+        <h3>XLSX</h3>
+        <p>Choose XLSX when you want a spreadsheet file containing the full invoice data. Review the extracted fields and line-item rows before using the workbook in an accounting or reporting workflow.</p>
+        <h3>CSV</h3>
+        <p>Choose CSV when you need the line items as tabular rows. The CSV export does not contain the full invoice record, so do not use it as a complete substitute for XLSX or JSON when header-level invoice fields are required.</p>
+        <h3>JSON</h3>
+        <p>Choose JSON when structured invoice data is the desired output. JSON is useful for inspecting data structures or passing reviewed records into a subsequent process. Validate any downstream assumptions independently.</p>
+        <p>Exports apply formula-injection sanitization. This is a defensive measure for exported values that could otherwise be interpreted as spreadsheet formulas. It does not make inaccurate extraction accurate or replace reviewing the document.</p>
+      </section>
+      <section>
+        <h2>How does the browser-processing privacy design work?</h2>
+        <p>DocuExtract has no application backend, account, database, analytics or telemetry. Application code does not upload selected invoice files to a server. Users can inspect their browser's network tab to independently verify the network activity observed while processing a document.</p>
+        <p>Invoice data is never written to URLs, localStorage or sessionStorage. PDF buffers are released and documents are destroyed after processing. React rendering does not use <code>dangerouslySetInnerHTML</code>.</p>
+        <p>These details describe the application's documented design, not a blanket guarantee about every component of a user's device or browsing environment. Browser extensions, device compromise, operating-system access, and the hosting provider's standard server logs are separate considerations. See the <a href="../privacy/">privacy page</a> and the repository's <a href="https://github.com/MANayab/DocuExtract/blob/main/PRIVACY.md" rel="noopener">PRIVACY.md</a>.</p>
+      </section>
+      <section>
+        <h2>What file types are supported?</h2>
+        <div class="table-wrap"><table><thead><tr><th scope="col">PDF type</th><th scope="col">Support</th><th scope="col">Workaround or next step</th></tr></thead><tbody>
+          <tr><th scope="row">Text-based PDF</th><td>Yes</td><td>Use the review screen and verify extracted values.</td></tr>
+          <tr><th scope="row">Multi-page PDF</th><td>Yes, up to 100 pages</td><td>Keep the file within the stated page limit.</td></tr>
+          <tr><th scope="row">Scanned or image-only PDF</th><td>Not yet</td><td>Use a text-based PDF; OCR is planned for Phase 2.</td></tr>
+          <tr><th scope="row">Password-protected or encrypted PDF</th><td>Limited</td><td>Encrypted files are rejected unless already decrypted.</td></tr>
+          <tr><th scope="row">Corrupt PDF</th><td>No</td><td>Use a valid, readable PDF.</td></tr>
+          <tr><th scope="row">Handwritten invoice</th><td>Not guaranteed</td><td>Manually verify the content; handwriting recognition is not guaranteed.</td></tr>
+          <tr><th scope="row">Multiple invoices in one PDF</th><td>Not yet</td><td>Separate the document into one invoice per PDF. Multi-invoice support is planned for Phase 2.</td></tr>
+        </tbody></table></div>
+      </section>
+      <section>
+        <h2>What are the extraction limitations and workarounds?</h2>
+        <p>DocuExtract is a practical extraction aid, not an authoritative accounting record generator. Its current boundaries should inform how you prepare documents and review results.</p>
+        <ul>
+          <li><strong>Labels above values:</strong> these layouts are not read. Use a compatible invoice layout where labels and values share a line or row, or manually correct the output if the review workflow permits it.</li>
+          <li><strong>Ambiguous numeric dates:</strong> the app reads dates such as 05/09/2026 as DD/MM/YYYY and flags them. Confirm the date using the original invoice.</li>
+          <li><strong>Unusual line-item tables:</strong> column-gap and header detection may need manual correction. Compare each quantity, description and amount with the source.</li>
+          <li><strong>Scanned documents:</strong> OCR is not currently available. Use a text-based PDF; planned OCR is not a present capability.</li>
+          <li><strong>Encrypted files:</strong> encrypted PDFs are rejected unless already decrypted. Provide an accessible, decrypted document where you are authorized to do so.</li>
+          <li><strong>Corrupt files:</strong> the app does not support corrupt PDFs. Obtain a valid copy from the document issuer.</li>
+          <li><strong>Handwriting:</strong> recognition is not guaranteed. Check all handwritten fields manually and do not rely on an unverified extraction.</li>
+          <li><strong>Several invoices in one file:</strong> the current workflow supports one invoice per PDF. Separate the invoices before processing.</li>
+          <li><strong>CSV scope:</strong> CSV contains line items only. Use XLSX or JSON when you need the full invoice.</li>
+        </ul>
+        <p>Every output must be reviewed before accounting, tax, payment or legal use. Compare important fields and totals with the original document and follow your organization's approval procedures.</p>
+      </section>
+      <section>
+        <h2>Which technologies support the tool?</h2>
+        <p>The application uses React 18, TypeScript, Vite, Tailwind CSS, pdf.js, ExcelJS and Zod. Tests use Vitest, Testing Library and Playwright, and deployment uses GitHub Actions.</p>
+        <p>The source is available in the <a href="https://github.com/MANayab/DocuExtract" rel="noopener">DocuExtract repository</a>. For bug reports and questions about observed behavior, use the <a href="https://github.com/MANayab/DocuExtract/issues" rel="noopener">GitHub issue tracker</a>.</p>
+      </section>
+      <section>
+        <h2>What is the current licence?</h2>
+        <p>DocuExtract v1.0.0 is open source under the MIT License. The developer plans to offer future production versions under a commercial licence. Versions already released under MIT remain available under MIT.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid">
+    <div><a class="wordmark" href="../"><span class="brand-mark" aria-hidden="true">D.</span><span>DocuExtract</span></a><p>PDF Invoice to Excel Extractor.</p></div>
+    <nav aria-label="Footer navigation"><a href="./">How it works</a><a href="../faq/">FAQ</a><a href="../roadmap/">Roadmap</a><a href="../privacy/">Privacy</a><a href="../developer/">Developer</a></nav>
+    <div><a href="https://github.com/MANayab/DocuExtract" rel="noopener">Source code</a><a href="https://github.com/MANayab/DocuExtract/issues" rel="noopener">Support and issues</a><p class="last-updated">Last updated: 2026-10-10</p></div>
+  </div><div class="container footer-bottom"><span>Processing and limitations</span><a href="../">Back to home ↑</a></div></footer>
+</body>
+</html>
