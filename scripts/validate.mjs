@@ -37,7 +37,7 @@ for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   if (!urls.has(url)) errors.push(`sitemap URL has no matching canonical in checked pages: ${url}`);
 }
 // Check that each public sitemap URL responds; this part requires network access.
-for (const match of sitemap.matchAll(/<loc>([^<]+)<\\/loc>/g)) {
+for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   const url = match[1];
   try {
     let response = await fetch(url, { method: 'HEAD', redirect: 'follow', signal: AbortSignal.timeout(12000) });
