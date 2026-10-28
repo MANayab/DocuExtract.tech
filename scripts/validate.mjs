@@ -2,7 +2,7 @@
 /**
  * Dependency-free static checks for the DocuExtract marketing site.
  * Run from the repository root: node scripts/validate.mjs
- * Network checks are intentionally separate and may fail offline.
+ * Includes live sitemap URL checks; requires network access.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -36,6 +36,17 @@ for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   const url = match[1];
   if (!urls.has(url)) errors.push(`sitemap URL has no matching canonical in checked pages: ${url}`);
 }
+// Check that each public sitemap URL responds; this part requires network access.
+for (const match of sitemap.matchAll(/<loc>([^<]+)<\\/loc>/g)) {
+  const url = match[1];
+  try {
+    let response = await fetch(url, { method: 'HEAD', redirect: 'follow', signal: AbortSignal.timeout(12000) });
+    if (!response.ok || response.status === 405) response = await fetch(url, { method: 'GET', redirect: 'follow', signal: AbortSignal.timeout(12000) });
+    if (!response.ok) errors.push('sitemap URL does not resolve (' + response.status + '): ' + url);
+  } catch (error) {
+    errors.push('sitemap URL request failed: ' + url + ' (' + error.message + ')');
+  }
+}
 if (errors.length) {
   console.error('FAIL: marketing-site validation');
   for (const error of errors) console.error(`- ${error}`);
@@ -43,4 +54,4 @@ if (errors.length) {
 } else {
   console.log(`PASS: JSON-LD syntax, canonical/og:url consistency, local links/assets, and sitemap-to-canonical mapping (${htmlFiles.length} HTML pages).`);
 }
-console.log('NOTE: this script does not make live HTTP requests; sitemap URL resolution and deployed rendering must be checked separately.');
+console.log('NOTE: visual rendering, OCR asset requests and CSP response headers still require browser verification.');
