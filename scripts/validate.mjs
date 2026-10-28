@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const htmlFiles = ['index.html', 'how-it-works/index.html', 'faq/index.html', 'roadmap/index.html', 'privacy/index.html', 'developer/index.html'];
+const htmlFiles = ['index.html', '404.html', 'how-it-works/index.html', 'faq/index.html', 'roadmap/index.html', 'privacy/index.html', 'developer/index.html'];
 const errors = [];
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 const urls = new Set();
