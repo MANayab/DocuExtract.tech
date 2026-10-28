@@ -26,7 +26,7 @@ Scope: software source repository is read-only. This table distinguishes source-
 
 ## Source files reviewed
 - Software: `README.md`, `CHANGELOG.md`, `package.json`, `src/content/site.ts`, `src/config/locales.ts`, `docs/OCR.md`, `LICENSE`, `TERMS.md`.
-- Landing: `index.html`, `how-it-works/index.html`, `faq/index.html`, `roadmap/index.html`, `privacy/index.html`, `developer/index.html`, `llms.txt`, `llms-full.txt`, `README.md`, `sitemap.xml`.
+- Landing: `index.html`, `404.html`, `how-it-works/index.html`, `faq/index.html`, `roadmap/index.html`, `privacy/index.html`, `developer/index.html`, `llms.txt`, `llms-full.txt`, `README.md`, `sitemap.xml`.
 
 ## Explicitly not verified
 - Live app version/release status.
