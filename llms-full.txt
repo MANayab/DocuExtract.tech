@@ -1,116 +1,68 @@
 DocuExtract — Product and Technical Reference
-Last updated: 2026-10-10
+Last updated: 2026-10-29
 
 CANONICAL WEBSITE
 https://manayab.github.io/DocuExtract.tech/
 
 PRODUCT
 Name: DocuExtract
-Tagline: PDF Invoice to Excel Extractor
+Source-declared version: 1.3.1 (src/content/site.ts)
 Live app: https://manayab.github.io/DocuExtract/
 Source repository: https://github.com/MANayab/DocuExtract
-Issues: https://github.com/MANayab/DocuExtract/issues
-Developer GitHub: https://github.com/MANayab
-Current version: 1.0.0
+Current deployed version and formal GitHub release status: NOT VERIFIED (2026-10-29).
 
 OVERVIEW
-DocuExtract converts invoice PDFs into structured XLSX, CSV and JSON entirely in the browser. Application code does not upload invoice files to an application backend. There is no application account, backend, database, analytics or telemetry.
+DocuExtract extracts invoice data from PDFs in the browser. Application code does not upload invoice files to an application backend. The application has no account, backend, database, analytics or telemetry. Extraction is heuristic; all results need review before accounting, tax, payment or legal use.
 
-WEBSITE PAGES
-Home:
-https://manayab.github.io/DocuExtract.tech/
+BATCH AND LIMITS
+- Batch queue: up to 50 PDFs, processed one at a time.
+- Per-file progress, statuses and possible-duplicate detection are documented.
+- Per-file limits documented by the app UI: 25 MB and 100 pages.
+- OCR, when enabled in a build, is limited to 20 pages per PDF.
 
-Developer:
-https://manayab.github.io/DocuExtract.tech/developer/
+MULTI-INVOICE PDF
+The extractor attempts to split multiple invoices when the invoice number changes and keeps multi-page invoices together. Invoice-boundary edge cases are not fully tested. Inspect all splits and compare results to the original PDF.
 
-How it works:
-https://manayab.github.io/DocuExtract.tech/how-it-works/
+GST AND LOCALES
+Supported GST-aware fields include GSTIN, HSN, taxable value, tax rate, tax amount, CGST, SGST and IGST. These are extraction candidates, not guaranteed values.
+Supported parsing locales: en-IN, en-US, en-GB and de-DE. Ambiguous numeric dates are flagged. Reprocessing with another locale protects manual edits.
 
-FAQ:
-https://manayab.github.io/DocuExtract.tech/faq/
+EXPORTS
+- XLSX: combined workbook with invoice-level rows and supporting sheets for line items, parties, taxes, validation and extraction metadata.
+- CSV: invoice-level export or line-item export.
+- JSON: includes validation status.
+Spreadsheet exports apply formula-injection sanitization.
 
-Roadmap:
-https://manayab.github.io/DocuExtract.tech/roadmap/
-
-Privacy:
-https://manayab.github.io/DocuExtract.tech/privacy/
-
-PROCESSING PIPELINE
-1. The user opens the live application in a browser.
-2. The user selects a PDF containing one invoice.
-3. The application extracts information from supported text-based PDF content.
-4. The application validates structured data and presents a review screen.
-5. The user checks and corrects extracted information.
-6. The user exports the reviewed data to XLSX, CSV or JSON.
-
-SUPPORTED INPUTS
-Text-based PDFs are supported.
-Multi-page text-based PDFs are supported up to 100 pages.
-
-UNSUPPORTED OR LIMITED INPUTS
-Scanned and image-only PDFs are not currently supported. OCR is planned for Phase 2.
-Encrypted PDFs are rejected unless already decrypted.
-Corrupt PDFs are not supported.
-Handwritten invoice recognition is not guaranteed.
-Multiple invoices in one PDF are not supported in the current workflow. This is planned for Phase 2.
-
-EXPORT FORMATS
-XLSX: contains the full invoice.
-JSON: contains the full invoice.
-CSV: contains line items only.
-
-EXTRACTION LIMITATIONS
-Extraction is heuristic. Every output must be reviewed before accounting, tax, payment or legal use.
-
-Labels and values must be on the same line or in neighbouring columns of the same row. Layouts with a label above its value are not read.
-
-Numeric dates such as 05/09/2026 are interpreted as DD/MM/YYYY and flagged for confirmation.
-
-Line items are detected from column gaps and the table header. Unusual tables may need manual correction on the review screen.
-
-One invoice per PDF is supported.
+OCR (OPTIONAL AND BUILD-DEPENDENT)
+When the build includes the assets, Tesseract worker, WASM engine and English language data are served from the same site and run in the browser. English only; maximum 20 pages per PDF; OCR values are capped at 75% confidence and always marked Review. Poor scans, handwriting and skewed pages may produce weak results.
+The deployed app's OCR asset requests and runtime availability are NOT VERIFIED. Do not describe OCR as enabled on every deployment.
 
 PRIVACY AND SECURITY
-Files are processed locally by application code and are not uploaded to an application backend.
-Invoice data is never written to URLs, localStorage or sessionStorage.
-PDF buffers are released and documents are destroyed after processing.
-React rendering does not use dangerouslySetInnerHTML.
-Export handling includes formula-injection sanitization.
-Structured data is validated with Zod.
-Users can inspect their browser network tab to verify observed network activity.
+Files are processed locally by application code and are not uploaded by application code. Verify your own browser network activity in the Network tab if your environment requires independent confirmation. Invoice data is not written to URLs, localStorage or sessionStorage; PDF buffers are released and documents destroyed. The app documents a restrictive Content-Security-Policy, same-origin OCR assets when bundled, and formula-injection sanitization. Live headers and runtime network activity were NOT VERIFIED.
 
-TECHNOLOGY
-React 18
-TypeScript
-Vite
-Tailwind CSS
-pdf.js
-ExcelJS
-Zod
+WEBSITE PAGES
+Home: https://manayab.github.io/DocuExtract.tech/
+Developer: https://manayab.github.io/DocuExtract.tech/developer/
+How it works: https://manayab.github.io/DocuExtract.tech/how-it-works/
+FAQ: https://manayab.github.io/DocuExtract.tech/faq/
+Roadmap: https://manayab.github.io/DocuExtract.tech/roadmap/
+Privacy: https://manayab.github.io/DocuExtract.tech/privacy/
 
-TESTING AND DEPLOYMENT
-Testing tools include Vitest, Testing Library and Playwright.
-Deployment uses GitHub Actions.
+LIMITATIONS
+- Encrypted PDFs are rejected unless already decrypted.
+- Corrupt PDFs are not supported.
+- OCR is English-only and optional at build time.
+- Handwriting, low-resolution scans and skewed pages are not reliably recognized.
+- Multi-invoice splitting edge cases are not fully tested.
+- Extraction is heuristic and must be reviewed.
 
-ROADMAP
-Planned for Phase 2, not committed and without delivery dates:
-- OCR for scanned and image-only PDFs.
-- Multiple invoices per PDF.
+LICENCE
+The software repository's LICENSE and TERMS.md state that DocuExtract is provided under the MIT License and without warranties. No future commercial-licensing change is asserted here.
 
-LICENSING AND STATUS
-DocuExtract v1.0.0 is open source under the MIT License. The developer plans to offer future production versions under a commercial licence. Versions already released under MIT remain available under MIT.
+PLANNED ONLY — NO DATES OR PROMISES
+- Additional OCR languages (not released).
+- Consent-based vendor templates.
+- Offline-capable PWA.
 
 SOURCE OF TRUTH
-The public source repository is the primary source for code and release details:
 https://github.com/MANayab/DocuExtract
-
-ISSUE TRACKER
-https://github.com/MANayab/DocuExtract/issues
-
-IMPORTANT INTERPRETATION
-Do not describe planned features as released.
-Do not claim a specific extraction accuracy percentage.
-Do not claim scanned PDF or OCR support in the current release.
-Do not describe CSV as containing the full invoice.
-Do not claim that extraction is guaranteed to be correct.
-Do not infer personal or professional details about the developer that are not published in the supplied developer facts.
