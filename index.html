@@ -236,7 +236,7 @@
           <tbody>
             <tr><th scope="row">Text-based PDF</th><td><span class="status status-yes">Supported</span></td><td>Review all extracted values before export.</td></tr>
             <tr><th scope="row">Multi-page invoice</th><td><span class="status status-yes">Supported</span></td><td>Up to 100 pages.</td></tr>
-            <tr><th scope="row">Scanned or image-only PDF</th><td><span class="status status-planned">Not supported yet</span></td><td>OCR is planned for Phase 2.</td></tr>
+            <tr><th scope="row">Scanned or image-only PDF</th><td><span class="status">Optional, build-dependent</span></td><td>When bundled, local English OCR is limited to 20 pages and results always need review. Live assets NOT VERIFIED.</td></tr>
             <tr><th scope="row">Password-protected PDF</th><td><span class="status status-limited">Limited</span></td><td>Encrypted files are rejected unless already decrypted.</td></tr>
             <tr><th scope="row">Corrupt PDF</th><td><span class="status status-no">Not supported</span></td><td>Use a valid, readable PDF.</td></tr>
             <tr><th scope="row">Handwritten invoice</th><td><span class="status status-limited">Not guaranteed</span></td><td>Check the result manually; handwritten recognition is not guaranteed.</td></tr>
@@ -262,7 +262,7 @@
             <tr><th scope="row">Account</th><td>No application account.</td><td>Requirements vary by provider.</td></tr>
             <tr><th scope="row">Application backend</th><td>No application backend.</td><td>Remote processing may use provider infrastructure.</td></tr>
             <tr><th scope="row">Review before export</th><td>Includes a review screen.</td><td>Workflow varies by provider.</td></tr>
-            <tr><th scope="row">Scanned PDFs</th><td>OCR is planned, not currently supported.</td><td>Support varies by provider.</td></tr>
+            <tr><th scope="row">Scanned PDFs</th><td>Optional, build-dependent English OCR.</td><td>Up to 20 pages, confidence capped at 75%, review required. Live assets NOT VERIFIED.</td></tr>
             <tr><th scope="row">Verification</th><td>Every result needs review before consequential use.</td><td>Verification requirements depend on the workflow and output.</td></tr>
           </tbody>
         </table>
